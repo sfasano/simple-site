@@ -3,10 +3,34 @@
     <head>
         <meta charset="utf-8" />
         <title>Simple site</title>
+        <style>
+            body {
+                background: #aaa;
+            }
+        </style>
     </head>
     <body>
-        <p>hello world</p>
+        <p>what color?</p>
+        <button id='color-picker'>Click for Random Color</button>
+        <div id='color'></div>
+
+
+        <main></main>
+
+        <script id='template' type='text/html'>
+            jokes:
+            {{#each jokes}}
+                <li>
+                <p>{{setup}}</p>
+                <p>{{punchline}}</p>
+                <p><input value='{{punchline}}'></p>
+                </li>
+            {{/each}}
+            <button on-click='save()'>save</button>
+        </script>
+
         <script src='https://code.jquery.com/jquery-2.1.4.min.js'></script>
+        <script src='http://cdn.ractivejs.org/edge/ractive.js'></script>
         <script src='simple.js'></script>
     </body>
 </html>

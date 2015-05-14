@@ -2,12 +2,10 @@ var express = require( 'express' ),
 	random = require( './random-color' ),
 	jokes = require( './jokes' ),
 	app = new express(),
+	path = require( 'path' ),
 	port = 3000;
 
-
-app.get( '/', function( req, res ) {
-	res.send( 'rocking code fellows!' );
-});
+app.use( express.static( path.join(__dirname, 'app') ) );
 
 app.get( '/color', function( req, res ) {
 	res.send( random() );
