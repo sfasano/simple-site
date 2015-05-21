@@ -8,7 +8,7 @@ var port = process.env.PORT || 3000;
 app.use( express.static(path.join(__dirname, "app")));
 
 app.listen(port, function() {
-  console.log('app server started on port', port);
+  console.log('app server started on Port', port);
 });
 
 app.get("/", function (req, res) {
