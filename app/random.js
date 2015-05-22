@@ -20,11 +20,30 @@ $('#color-picker').on('click', function () {
     });
 });
 
-$.get( '/jokes', function (jokes) {
-    //console.log(jokes);
-    var main = $("main");
-    jokes.forEach(function(joke) {
-      main.append('<p>' + joke.setup + '</p>');
-      main.append('<p>' + joke.punchline + '</p>');
-    });
+var i = 0;
+
+$('#jokes-display').on('click', function () {
+  $.get( '/jokes', function (jokes) {
+      //console.log(jokes);
+      var main = $("main");
+      main.html("");
+      //jokes.forEach(function(joke) {
+        main.append('<p>' + jokes[i].setup + '</p>');
+        main.append('<p>' + jokes[i].punchline + '</p>');
+        i++;
+        if (i >= jokes.length) { i = 0; }
+      //});
+  });
+});
+
+$( window ).load( function () {
+  $.get( '/youtube', function (youtube) {
+      var div = $("div");
+      div.html("");
+      youtube.forEach(function(video) {
+        div.append('<p class="title">TITLE: ' + video.title + '</p>');
+        div.append('<p class="uploader">UPLOADED BY: ' + video.uploader + '</p>');
+        div.append('<p class="views">NUMBER OF VIEWS: ' + video.views + '</p><br>');
+      });
+  });
 });
